@@ -27,6 +27,16 @@ export const metadata = {
   verification: googleVerification ? { google: googleVerification } : undefined
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#111111" }
+  ]
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

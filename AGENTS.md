@@ -66,7 +66,13 @@ Primary services:
 
 ## Internationalization
 
-- English is the default route. German uses the `/de/` route family.
+- English is the default route, served at the bare root `/` (not `/en/`);
+  German uses the `/de/` route family. This is deliberate, not a leftover:
+  serving the default language at the root — with `x-default` → `/` — is the
+  SEO-recommended pattern, and the static GitHub Pages host has no server-side
+  redirect to send `/` → `/en/` cleanly. Do not move English under a locale
+  segment. (Because of this flat structure there is one root layout, so
+  `scripts/fix-lang.mjs` sets `lang="de"` on the exported German pages.)
 - Browser language detection may send a first-time German-language visitor
   from the English home route to `/de/`. A manually selected language is stored
   locally and must take precedence over browser detection.
@@ -99,12 +105,37 @@ Primary services:
   canonical URL, reciprocal `hreflang` links, and the English `x-default`.
 - Keep the XML sitemap and `robots.txt` current when adding or removing an
   indexable route. Only include pages that should appear in search results.
-- The homepages include truthful `ProfessionalService` JSON-LD based on actual
-  services. Do not add ratings, locations, contact details, or claims that are
-  not present and verifiable.
-- Keep the social preview as a real static PNG asset so GitHub Pages serves a
-  reliable image content type. Verify its dimensions and composition after any
-  change.
+- The homepages emit a truthful schema.org `@graph` (`WebSite`, `Person`,
+  `ProfessionalService`, `WebPage`) linked by `@id`, defined in
+  `app/structured-data.jsx` and fed by the `PROFILE` entity in `app/seo.js`.
+  Location is country-level only (`addressCountry: AT`, `areaServed: AT/DE/CH`),
+  matching the imprint registration; the only contact detail is a `ContactPoint`
+  pointing at the on-site contact form. Do not add ratings, a street address,
+  phone/email literals, or claims that are not present and verifiable.
+  `Person.sameAs` holds verified public profile URLs only, defined once in
+  `PROFILE.profiles` (`app/seo.js`) and reused as the footer profile icon links
+  (`app/social-icons.jsx`), so the entity graph and the visible links never
+  drift. The footer icons are monochrome brand glyphs in `currentColor` (Lucide
+  has no Xing mark) with `rel="me"` and accessible labels.
+- AI agents are a first-class audience. `robots.txt` explicitly welcomes the
+  major AI and answer-engine crawlers, and `/llms.txt` (in `public/`) gives
+  assistants a curated summary of the person and services. Keep `/llms.txt` in
+  sync with the service list and never place the contact email in it.
+- The static export uses a single root layout (`<html lang="en">`).
+  `scripts/fix-lang.mjs` runs after `next build` to set `lang="de"` on every
+  `out/de/` page. Keep it wired into the `build` script when changing routing or
+  locales.
+- App icons are real PNGs generated from the `RS` monogram
+  (`public/icon-192.png`, `icon-512.png`, `icon-maskable-512.png`,
+  `app/apple-icon.png`) and referenced by the web manifest; `app/icon.svg`
+  remains the favicon. Regenerate all sizes together if the logo changes.
+- Keep the social preview as a real static PNG asset (`public/og-image.png`,
+  1200×630) so GitHub Pages serves a reliable image content type. The current
+  composition is editorial and on-brand: the `saidov.net` wordmark and the `RS`
+  monogram (brand red `#c11f3a`) on the cream canvas, the `SAP CONSULTING`
+  eyebrow, the headline with a brand-red trailing period, and the
+  `SYSTEMS BUILT FOR PRODUCTION` tagline, set in Inter and IBM Plex Mono to match
+  the site. Verify its dimensions and composition after any change.
 - The imprint is based on supplied registration and UID records. Do not change
   those details without updated source documents. The privacy page still needs
   a final review whenever hosting, the contact form, or analytics change.
@@ -147,3 +178,10 @@ Primary services:
 | Browser language detection with manual preference override | Active |
 | 3D/4D/5D interactive hyperrectangle hero | Active |
 | Canonical, hreflang, sitemap, robots, JSON-LD, and social preview SEO baseline | Active |
+| Linked schema.org `@graph` (WebSite/Person/ProfessionalService/WebPage) | Active |
+| `llms.txt` + explicit AI-crawler allowlist in `robots.txt` | Active |
+| Country-level location (AT) with DACH `areaServed` in structured data | Active |
+| Post-build `<html lang="de">` fix for the German export | Active |
+| Real PNG app icons and a complete web manifest | Active |
+| Footer profile icon links (LinkedIn/GitHub/Xing) from `PROFILE.profiles` | Active |
+| Light/dark `theme-color` and `color-scheme` matching the real background | Active |

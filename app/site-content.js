@@ -8,7 +8,8 @@ export const siteContent = {
     },
     footer: {
       imprint: "imprint",
-      privacy: "privacy"
+      privacy: "privacy",
+      profilesLabel: "Profiles"
     },
     home: {
       eyebrow: "SAP CONSULTING",
@@ -183,7 +184,8 @@ export const siteContent = {
     },
     footer: {
       imprint: "impressum",
-      privacy: "datenschutz"
+      privacy: "datenschutz",
+      profilesLabel: "Profile"
     },
     home: {
       eyebrow: "SAP BERATUNG",

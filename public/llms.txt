@@ -1,0 +1,63 @@
+# Razim Saidov — SAP Consultant
+
+> Razim Saidov, MSc is a professional SAP Consultant covering SAP HANA, ABAP
+> development, SAP CAP, SAP BTP, SAP NetWeaver, BW/4HANA, SAP Business One, SAP
+> Joule and Business AI. The practice is based in Austria and works across the
+> DACH region, with remote delivery available worldwide.
+
+Razim Saidov works where data, application, platform and AI questions meet,
+turning sound technical decisions into work that holds up in production. The
+approach favors direct communication, practical architecture, production-minded
+code and documentation that lets the next engineer understand why a system is
+shaped the way it is.
+
+This is a static, privacy-respecting website with no analytics, advertising, or
+tracking. Content is available in English (default) and German.
+
+## Services
+
+- **SAP HANA** — End-to-end HANA system delivery and operations: installation,
+  configuration, administration, lifecycle maintenance, data modeling,
+  SQLScript and systematic performance engineering (HANA 2.0).
+- **SAP ABAP** — ABAP development for robust SAP extensions and integrations,
+  with focused experience in Grants Management, Public Sector and FI/CO
+  processes (ABAP OO, BAdIs, enhancements).
+- **SAP CAP & XSA Development** — Enterprise-grade CAP and SAP HANA XS Advanced
+  (XSA) applications and extensions: domain modeling, OData services, HDI
+  containers, Fiori integration, authorization and maintainable delivery.
+- **SAP BTP** — Architecture and delivery on SAP BTP: secure connectivity,
+  identity and access, integration, CI/CD and well-operated cloud workloads
+  (Cloud Foundry, XSUAA, Integration Suite).
+- **SAP NetWeaver & BW** — Architecture, delivery and operations for SAP
+  NetWeaver, BW/4HANA and BW on HANA, with clear data modeling, data flows,
+  integration and dependable reporting foundations.
+- **SAP Business One** — Integration and extension services that improve
+  reporting, system interoperability and day-to-day operating processes
+  (Service Layer, APIs, add-ons).
+- **SAP Joule & Business AI** — Joule readiness, Joule Studio extensions, skills
+  and agent design, grounded in trusted business context, role-based access and
+  practical governance.
+- **AI Integration & Automation** — Practical AI solutions that connect SAP data
+  and processes with approved AI services for retrieval, document intelligence
+  and workflow automation.
+
+## Coverage
+
+- Based in Austria; primary service region is DACH (Austria, Germany,
+  Switzerland). Remote engagements are available worldwide.
+- Working languages: English and German.
+
+## Pages
+
+- [Home (English)](https://saidov.net/)
+- [Home (German)](https://saidov.net/de/)
+- [Contact](https://saidov.net/#contact): use the contact form on the website to
+  start a conversation about an SAP system, timeline and where help is needed.
+- [Imprint](https://saidov.net/imprint/)
+- [Privacy](https://saidov.net/privacy/)
+
+## Contact
+
+Use the contact form at https://saidov.net/#contact. The email address is
+published only on the website itself and is intentionally not included in this
+file.

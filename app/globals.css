@@ -509,6 +509,34 @@ a:focus-visible {
   color: var(--foreground);
 }
 
+.footer-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.footer-social {
+  align-items: center;
+}
+
+.footer-social li {
+  align-items: center;
+  display: flex;
+}
+
+.footer-social a {
+  align-items: center;
+  display: flex;
+  transition: color 180ms ease;
+}
+
+.footer-social svg {
+  display: block;
+  height: 18px;
+  width: 18px;
+}
+
 .scroll-top {
   align-items: center;
   background: var(--foreground);
