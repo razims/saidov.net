@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 import { getContent } from "./site-content";
 
@@ -21,6 +23,7 @@ export default function SiteHeader({ isHome = false, locale = "en", page = "home
   const content = getContent(locale);
   const navigation = ["home", "services", "contact"];
   const homePath = pagePath(locale, "home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="top-nav" aria-label="Primary navigation">
@@ -39,14 +42,29 @@ export default function SiteHeader({ isHome = false, locale = "en", page = "home
         />
         <span>Razim Saidov</span>
       </Link>
-      <div className="nav-links">
+      <button
+        className="mobile-menu-toggle"
+        type="button"
+        aria-controls="site-navigation"
+        aria-expanded={isMenuOpen}
+        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        title={isMenuOpen ? "Close menu" : "Open menu"}
+        onClick={() => setIsMenuOpen((current) => !current)}
+      >
+        {isMenuOpen ? <X aria-hidden="true" size={17} /> : <Menu aria-hidden="true" size={18} />}
+      </button>
+      <div className={`nav-links${isMenuOpen ? " is-open" : ""}`} id="site-navigation">
         {navigation.map((item) => (
-          <Link href={isHome ? `#${item}` : `${homePath}#${item}`} key={item}>
+          <Link
+            href={isHome ? `#${item}` : `${homePath}#${item}`}
+            key={item}
+            onClick={() => setIsMenuOpen(false)}
+          >
             {content.navigation[item]}
           </Link>
         ))}
         <span
-          className="language-switch"
+          className={`language-switch${locale === "de" ? " is-de" : ""}`}
           role="group"
           aria-label={content.navigation.languageLabel}
         >
@@ -55,7 +73,10 @@ export default function SiteHeader({ isHome = false, locale = "en", page = "home
             href={pagePath("en", page)}
             hrefLang="en"
             lang="en"
-            onClick={() => window.localStorage.setItem(LANGUAGE_PREFERENCE_KEY, "en")}
+            onClick={() => {
+              window.localStorage.setItem(LANGUAGE_PREFERENCE_KEY, "en");
+              setIsMenuOpen(false);
+            }}
           >
             EN
           </Link>
@@ -64,7 +85,10 @@ export default function SiteHeader({ isHome = false, locale = "en", page = "home
             href={pagePath("de", page)}
             hrefLang="de"
             lang="de"
-            onClick={() => window.localStorage.setItem(LANGUAGE_PREFERENCE_KEY, "de")}
+            onClick={() => {
+              window.localStorage.setItem(LANGUAGE_PREFERENCE_KEY, "de");
+              setIsMenuOpen(false);
+            }}
           >
             DE
           </Link>
